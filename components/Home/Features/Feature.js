@@ -18,9 +18,15 @@ const Description = styled.div`
     margin: 1rem 0 1.5rem 0;
 `;
 
+const H = styled.h5`
+    margin-bottom: 0.1rem;
+`;
+
 const Soon = styled.span`
-    color: hsl(204, 86%, 53%);
+    display: inline-block;
+    margin-top: 0.3rem;
     border-bottom: 1px dashed hsl(204, 86%, 53%);
+    color: hsl(204, 86%, 53%);
 `;
 
 export default function Feature({ name, description, link, icon }) {
@@ -32,7 +38,7 @@ export default function Feature({ name, description, link, icon }) {
                 </Circle>
             </div>
             <Description className="has-text-centered">
-                <h5 className="is-size-5 has-text-black-ter">{name}</h5>
+                <H className="is-size-5 has-text-black-ter">{name}</H>
                 <p>{description}</p>
                 <Soon>Comming soon</Soon>
             </Description>

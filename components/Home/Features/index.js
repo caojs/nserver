@@ -1,5 +1,6 @@
-import {} from 'react-icons/fa';
-import Feature from './Feature';
+import styled from 'styled-components'
+import {} from 'react-icons/fa'
+import Feature from './Feature'
 
 const features = [{
     name: "Filter",
@@ -15,9 +16,13 @@ const features = [{
     icon: ""
 }]
 
+const Section = styled.section`
+    background: white;
+`;
+
 export default function Features() {
     return (
-        <section className="section">
+        <Section className="section">
             <div className="container">
                 <div className="columns is-mobile is-multiline is-centered">
                     {features.map(feature => (
@@ -27,6 +32,6 @@ export default function Features() {
                     ))}
                 </div>
             </div>
-        </section>
+        </Section>
     )
 }

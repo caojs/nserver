@@ -1,0 +1,2 @@
+export const rootApi = process.env.NODE_ENV === 'production' ? 'xquant.ai:443' : 'http://127.0.0.1:1337';
+export const imagePath = process.env.NODE_ENV === 'production' ? 'xquant.ai:443' : 'http://127.0.0.1:1337';

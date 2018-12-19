@@ -3,6 +3,8 @@ import styled from 'styled-components'
 
 const Wrapper = styled.div`
     position: relative;
+    max-height: 350px;
+    overflow: hidden;
 `;
 
 const Info = styled.div`
@@ -12,6 +14,18 @@ const Info = styled.div`
     transform: translate(-50%, -50%);
     z-index: 2;
     color: white;
+    text-align: center;
+`;
+
+const H = styled.h2`
+    font-size: 3.5rem;
+    font-weight: 500;
+    line-height: 1.2;
+`;
+
+const P = styled.p`
+    font-size: 1.75rem;
+    line-height: 1.2;
 `;
 
 const Figure = styled.figure`
@@ -24,7 +38,7 @@ const Figure = styled.figure`
         height: 100%;
         width: 100%;
         background: #080808;
-        opacity: 0.3;
+        opacity: 0.4;
     }
 `;
 
@@ -33,8 +47,8 @@ export default class Banner extends Component {
         return (
             <Wrapper>
                 <Info>
-                    <h2>XQuant</h2>
-                    <p>Everything must be quantified</p>
+                    <H>XQuant</H>
+                    <P>Everything must be quantified</P>
                 </Info>
                 <Figure className="image">
                     <img src="/static/banner.jpg"/>
