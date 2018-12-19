@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import NewsItem from './NewsItem';
+import NewsList from './NewsList'
 
 const Heading = styled.div`
     margin-bottom: 45px;
@@ -18,21 +18,6 @@ const P = styled.p`
     color: #777;
 `;
 
-const List = styled.div`
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-left: -0.75rem;
-    margin-right: -0.75rem;
-    overflow: hidden;
-`;
-
-const Item = styled(NewsItem)`
-    flex: 1 1 350px;
-    margin: 0.75rem;
-`;
-
 export default function News({ news }) {
     return (
         <section className="section">
@@ -41,11 +26,7 @@ export default function News({ news }) {
                 <P>We promise to keep you updated with our blog posts.</P>
             </Heading>
             <div className="container">
-                <List>
-                    {news.map((item, id) => (
-                        <Item key={id} {...item}/>
-                    ))}
-                </List>
+                <NewsList news={news}/>
             </div>
         </section>
     )

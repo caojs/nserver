@@ -5,7 +5,7 @@ import { range, clamp } from 'lodash'
 function getPages(page, totalPage) {
   const step = 1;
   const first = 0
-  const last = totalPage - 1
+  const last = totalPage - 1 || 0
 
   const start = clamp(page - step, first, last)
   const end = start + (step * 2 + 1)
@@ -37,11 +37,17 @@ function getPages(page, totalPage) {
 }
 
 function queryUrl(page) {
-  return '/posts?page=' + page;
+  return {
+    pathname: '/posts',
+    query: { page }
+  };
 }
 
-function asUrl(page) {
-  return '/posts/' + page
+function asUrl(p) {
+  return {
+    pathname: '/tin-tuc',
+    query: p === 0 ? {} : { p }
+  }
 }
 
 export default function Pagination(props) {
@@ -54,15 +60,20 @@ export default function Pagination(props) {
 
   const pages = getPages(page, totalPage)
 
+  const isFirstPage = page === 0
+  const isLastPage = page === totalPage - 1
+
   return (
     <nav className="pagination is-centered" role="navigation" aria-label="pagination">
-      <Link as={asUrl(page - 1)} href={queryUrl(page - 1)}>
-        <a className="pagination-previous" disabled={page === 0}>Previous</a>
-      </Link>
+      {!isFirstPage &&
+        <Link as={asUrl(page - 1)} href={queryUrl(page - 1)}>
+          <a className="pagination-previous" disabled={isFirstPage}>Previous</a>
+        </Link>}
 
-      <Link as={asUrl(page + 1)} href={queryUrl(page + 1)}>
-        <a className="pagination-next" disabled={page === totalPage - 1}>Next page</a>
-      </Link>
+      {!isLastPage &&
+        <Link as={asUrl(page + 1)} href={queryUrl(page + 1)}>
+          <a className="pagination-next" disabled={isLastPage}>Next</a>
+        </Link>}
 
       <ul className="pagination-list">
         {pages.map((bage, index) => {

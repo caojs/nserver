@@ -1,9 +1,32 @@
 import React, { Component } from 'react'
-import request from '~/request'
+import styled from 'styled-components'
 
+import request from '~/request'
+import Layout from '~/components/Layout'
+import NewsList from '~/components/Home/News/NewsList'
 import Pagination from './Pagination'
 
-const limit = 1;
+const Heading = styled.div`
+    margin-bottom: 45px;
+    text-align: center;
+`;
+
+const H = styled.h3`
+    margin-bottom: 0.4rem;
+    font-size: 1.9rem;
+    font-weight: 700;
+`;
+
+const P = styled.p`
+    font-size: 1.2rem;
+    color: #777;
+`;
+
+const List = styled.div`
+  margin-bottom: 30px;
+`;
+
+const limit = 4;
 
 export default class Posts extends Component {
   static async getInitialProps({ query }) {
@@ -34,9 +57,20 @@ export default class Posts extends Component {
     const totalPage = Math.ceil(count/limit)
 
     return (
-      <div>
-        <Pagination totalPage={totalPage} page={page}/>
-      </div>
+      <Layout>
+        <section className="section">
+          <div className="container">
+            <Heading>
+              <H>Tin Tức</H>
+              <P>Cập nhật tin tức mới nhất</P>
+            </Heading>
+            <List>
+              <NewsList news={list}/>
+            </List>
+            {totalPage > 1 && <Pagination totalPage={totalPage} page={page}/>}
+          </div>
+        </section>
+      </Layout>
     )
   }
 }

@@ -9,8 +9,12 @@ const handle = app.getRequestHandler()
 app.prepare().then(() => {
   const server = express()
 
-  server.get('/posts/:page?', (req, res) => {
-    return app.render(req, res, '/posts', { page: req.params.page || 0})
+  server.get('/tin-tuc', (req, res) => {
+    return app.render(req, res, '/posts', { page: req.query.p || 0})
+  })
+
+  server.get('/tin-tuc/:slug', (req, res) => {
+    return app.render(req, res, '/post-detail', { slug: req.params.slug })
   })
 
   server.get('*', (req, res) => {

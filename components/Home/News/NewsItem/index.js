@@ -1,5 +1,6 @@
 import cn from 'classnames'
 import fecha from 'fecha'
+import slugify from 'slugify'
 import styled from 'styled-components'
 import Link from 'next/link'
 import { FiChevronsRight } from 'react-icons/fi';
@@ -62,6 +63,7 @@ const RMA = styled(A)`
 export default function NewsItem(props) {
   const {
     className,
+    id,
     title,
     description,
     thumbnail,
@@ -69,6 +71,15 @@ export default function NewsItem(props) {
   } = props;
 
   const createdAt = fecha.format(new Date(created_at), 'mediumDate');
+
+  const as = `/tin-tuc/${slugify(title)}.${id}`
+
+  const href = {
+    pathname: '/post-detail',
+    query: {
+      slug: `${slugify(title)}.${id}`
+    }
+  }
 
   return (
     <Wrapper className={cn(className)}>
@@ -81,13 +92,13 @@ export default function NewsItem(props) {
         <div className="card-content">
           <div className="content">
             <Title>
-              <Link href="/">
+              <Link as={as} href={href}>
                 <A>{title}</A>
               </Link>
             </Title>
             <Time className="has-text-grey-light" dateTime={createdAt}>{createdAt}</Time>
             <p>{description}</p>
-            <Link href="/">
+            <Link as={as} href={href}>
               <RMA>Read more <FiChevronsRight/></RMA>
             </Link>
           </div>

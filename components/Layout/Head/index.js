@@ -3,9 +3,16 @@ import cn from 'classnames'
 import Link from 'next/link'
 import styled from 'styled-components';
 
-const Wrapper = styled.div`
+const Wrapper = styled.section`
+    padding-top: 0;
+    padding-bottom: 0;
     background-color: white;
     box-shadow: 0 2px 0 0 #f5f5f5;
+`;
+
+const Logo = styled.a`
+    font-size: 1.2rem;
+    font-weight: 700;
 `;
 
 export default class Head extends Component {
@@ -27,14 +34,14 @@ export default class Head extends Component {
         const { isOpen } = this.state;
 
         return (
-            <Wrapper>
+            <Wrapper className="section">
             <div className="container">
                 <nav className="navbar" role="navigation" aria-label="main navigation">
                     <div className="navbar-brand">
                         <Link href="/">
-                            <a className="navbar-item">
-                                <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28" />
-                            </a>
+                            <Logo className="navbar-item">
+                                XQuant
+                            </Logo>
                         </Link>
 
                         <a role="button" className={cn("navbar-burger burger", { "is-active": isOpen })} aria-label="menu" aria-expanded="false" onClick={this.toggle}>
@@ -46,18 +53,20 @@ export default class Head extends Component {
 
                     <div className={cn("navbar-menu", { "is-active": isOpen })}>
                         <div className="navbar-start">
-                            <a className="navbar-item"> Home </a>
-                            <a className="navbar-item"> News </a>
+                            <Link href="/">
+                                <a className="navbar-item">Trang chủ</a>
+                            </Link>
+                            <Link href="/tin-tuc">
+                                <a className="navbar-item">Tin tức</a>
+                            </Link>
 
                             <div className="navbar-item has-dropdown is-hoverable">
-                                <a className="navbar-link"> More </a>
+                                <a className="navbar-link">Tính năng</a>
 
                                 <div className="navbar-dropdown">
-                                    <a className="navbar-item"> About </a>
-                                    <a className="navbar-item"> Jobs </a>
-                                    <a className="navbar-item"> Contact </a>
-                                    <hr className="navbar-divider" />
-                                    <a className="navbar-item"> Report an issue </a>
+                                    <a className="navbar-item">Filter</a>
+                                    <a className="navbar-item">Optimization</a>
+                                    <a className="navbar-item">Backtesting</a>
                                 </div>
                             </div>
                         </div>
@@ -65,8 +74,8 @@ export default class Head extends Component {
                         <div className="navbar-end">
                             <div className="navbar-item">
                                 <div className="buttons">
-                                    <a className="button is-primary"> <strong>Sign up</strong> </a>
-                                    <a className="button is-light"> Log in </a>
+                                    <a className="button is-primary"> <strong>Đăng ký</strong> </a>
+                                    <a className="button is-light">Đăng nhập</a>
                                 </div>
                             </div>
                         </div>
