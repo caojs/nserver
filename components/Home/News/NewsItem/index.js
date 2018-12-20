@@ -20,6 +20,18 @@ const Card = styled.div`
   height: 100%;
 `;
 
+const Figure = styled.figure`
+  &&& {
+    overflow: hidden;
+    img {
+      top: 50%;
+      left: 50%;
+      height: auto;
+      transform: translate(-50%, -50%);
+    }
+  }
+`;
+
 const A = styled.a`
   color: #333;
   transition: color 0.2s ease;
@@ -85,9 +97,9 @@ export default function NewsItem(props) {
     <Wrapper className={cn(className)}>
       <Card className="card">
         {thumbnail && <div className="card-image">
-          <figure className="image is-5by3">
+          <Figure className="image is-5by3">
             <img src={fillPath(thumbnail.url)} alt="thumbnail image"/>
-          </figure>
+          </Figure>
         </div>}
         <div className="card-content">
           <div className="content">
