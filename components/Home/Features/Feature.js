@@ -12,6 +12,16 @@ const Circle = styled.div`
     line-height: 88px;
     border-radius: 100%;
     border: 1px solid rgba(0,0,0,.15);
+    position: relative;
+
+    svg {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 35px;
+        color: hsl(0, 0%, 45%);
+    }
 `;
 
 const Description = styled.div`
@@ -34,7 +44,7 @@ export default function Feature({ name, description, link, icon }) {
         <Wrapper>
             <div className="has-text-centered">
                 <Circle>
-                    <span>{icon}</span>
+                    {icon}
                 </Circle>
             </div>
             <Description className="has-text-centered">

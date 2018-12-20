@@ -1,19 +1,19 @@
 import styled from 'styled-components'
-import {} from 'react-icons/fa'
+import { FiFilter, FiPieChart, FiCrosshair } from 'react-icons/fi'
 import Feature from './Feature'
 
 const features = [{
     name: "Filter",
     description: "Aut et ea atque tempora sed sed omnis sapiente et.",
-    icon: ""
+    icon: <FiFilter/>
 }, {
     name: "Optimization",
     description: "Aut et ea atque tempora sed sed omnis sapiente et.",
-    icon: ""
+    icon: <FiCrosshair/>
 }, {
     name: "Backtest",
     description: "Aut et ea atque tempora sed sed omnis sapiente et. Aut et ea atque tempora sed sed omnis sapiente et.",
-    icon: ""
+    icon: <FiPieChart/>
 }]
 
 const Section = styled.section`
