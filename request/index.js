@@ -1,7 +1,7 @@
-import fetch from 'cross-fetch'
 import queryString from 'query-string'
 
 import { rootApi } from '~/config'
+import fetch from './fetch'
 
 const request = function (url, options = {}) {
     if (url[0] === '/') {

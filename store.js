@@ -1,20 +1,23 @@
 import { createStore, applyMiddleware } from 'redux'
+import thunk from 'redux-thunk'
+import { createMiddleware } from 'redux-api-middleware'
 
-const bindMiddleware = middleware => {
+import fetch from '~/request/fetch'
+import reducers from '~/reducers'
+
+const bindMiddleware = middlewares => {
   if (process.env.NODE_ENV !== 'production') {
     const { composeWithDevTools } = require('redux-devtools-extension')
-    return composeWithDevTools(applyMiddleware(...middleware))
+    return composeWithDevTools(applyMiddleware(...middlewares))
   }
-  return applyMiddleware(...middleware)
+  return applyMiddleware(...middlewares)
 }
-
-const rootReducer = (state, action) => state;
 
 function configureStore (initialState = {}) {
   const store = createStore(
-    rootReducer,
+    reducers,
     initialState,
-    bindMiddleware([])
+    bindMiddleware([ createMiddleware({ fetch }), thunk ])
   )
 
   return store

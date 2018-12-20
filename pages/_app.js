@@ -7,7 +7,7 @@ import Router from 'next/router'
 import { initGA, logPageView } from '../utils/analytics'
 import initStore from '../store'
 
-import '../styles/index.scss';
+import '../styles/index.scss'
 
 export default withRedux(initStore)(
   class MyApp extends App {
