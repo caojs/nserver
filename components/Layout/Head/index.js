@@ -15,6 +15,12 @@ const Logo = styled.a`
     font-weight: 700;
 `;
 
+const Tag = styled.span`
+    margin-left: 6px;
+    height: 1.8rem;
+    font-size: 0.75rem;
+`;
+
 export default class Head extends Component {
     constructor(props) {
         super(props);
@@ -61,7 +67,10 @@ export default class Head extends Component {
                             </Link>
 
                             <div className="navbar-item has-dropdown is-hoverable">
-                                <a className="navbar-link">Tính năng</a>
+                                <a className="navbar-link">
+                                    Tính năng
+                                    <Tag className="tag is-danger">Sắp ra</Tag>
+                                </a>
 
                                 <div className="navbar-dropdown">
                                     <a className="navbar-item">Filter</a>
