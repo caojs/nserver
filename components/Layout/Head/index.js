@@ -62,7 +62,7 @@ export default class Head extends Component {
                             <Link href="/">
                                 <a className="navbar-item">Trang chủ</a>
                             </Link>
-                            <Link href="/tin-tuc">
+                            <Link as="/tin-tuc" href="/posts">
                                 <a className="navbar-item">Tin tức</a>
                             </Link>
 
