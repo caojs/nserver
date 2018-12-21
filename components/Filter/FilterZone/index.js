@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Formik, Form } from 'formik'
 
-import Descriptive from './Descriptive'
+import FilterSelection from './FilterSelection'
 
 export default class FilterZone extends Component {
     render() {
@@ -12,7 +12,7 @@ export default class FilterZone extends Component {
                 render={(props) => {
                     return (
                         <Form>
-                            <Descriptive/>
+                            <FilterSelection/>
                             <button type="submit">Submit</button>
                         </Form>
                     )
