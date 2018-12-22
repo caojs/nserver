@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'redux'
+
+import Layout from '~/components/Layout'
 import FilterZone from './FilterZone'
 
 class Filter extends Component {
@@ -14,9 +16,13 @@ class Filter extends Component {
 
     render() {
         return (
-            <div>
-                <FilterZone/>
-            </div>
+            <Layout>
+                <section className="section">
+                    <div className="container">
+                        <FilterZone/>
+                    </div>
+                </section>
+            </Layout>
         )
     }
 }
