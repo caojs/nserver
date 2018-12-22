@@ -20,10 +20,8 @@ const filters = [{
 
 export default class Descriptive extends Component {
     render() {
-        console.log(filters)
         return (
             <div>
-                abc
                 {filters.map(({ label, name, options }) => {
                     return (
                     <div className="field" key={name}>

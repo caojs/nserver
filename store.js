@@ -1,6 +1,5 @@
 import { createStore, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
-import { createMiddleware } from 'redux-api-middleware'
 
 import fetch from '~/request/fetch'
 import reducers from '~/reducers'
@@ -14,10 +13,14 @@ const bindMiddleware = middlewares => {
 }
 
 function configureStore (initialState = {}) {
+  const { createMiddleware } = require('redux-api-middleware')
   const store = createStore(
     reducers,
     initialState,
-    bindMiddleware([ createMiddleware({ fetch }), thunk ])
+    bindMiddleware([
+      createMiddleware({ fetch }),
+      thunk
+    ])
   )
 
   return store
