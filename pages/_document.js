@@ -1,9 +1,5 @@
 import Document, { Head, Main, NextScript } from 'next/document'
-import styled, { ServerStyleSheet } from 'styled-components'
-
-const Body = styled.body`
-  background-color: #f5f5f5;
-`;
+import { ServerStyleSheet } from 'styled-components'
 
 export default class MyDocument extends Document {
   static async getInitialProps (ctx) {
@@ -28,10 +24,10 @@ export default class MyDocument extends Document {
         <Head>
           <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
         </Head>
-        <Body>
+        <body>
           <Main />
           <NextScript />
-        </Body>
+        </body>
       </html>
     )
   }

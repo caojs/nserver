@@ -2,9 +2,12 @@ import React, { Component } from 'react'
 import cn from 'classnames'
 import { connect, getIn } from 'formik'
 
-import Descriptive from './Descriptive'
-import Fundamental from './Fundamental'
-import Technical from './Technical'
+import djson from './json/descriptive.json'
+import fjson from './json/fundamental.json'
+import tjson from './json/technical.json'
+
+import FilterCounter from './FilterCounter'
+import FilterTab from './FilterTab'
 
 const D = "desctiptive"
 const F = "fundamental"
@@ -29,33 +32,39 @@ class FilterSelection extends Component {
   render() {
     const { active } = this.state
 
-    const { formik } = this.props
-    const descriptive = getIn(formik.values, 'filter.descriptive')
-
     return (
       <div>
         <div className="tabs">
           <ul>
             <li className={cn({"is-active": active === D})}>
-              <a onClick={() => this.onChange(D)}>Descriptive</a>
+              <a onClick={() => this.onChange(D)}>
+                Descriptive
+                <FilterCounter filters={djson}/>
+              </a>
             </li>
             <li className={cn({"is-active": active === F})}>
-              <a onClick={() => this.onChange(F)}>Fundamental</a>
+              <a onClick={() => this.onChange(F)}>
+                Fundamental
+                <FilterCounter filters={fjson}/>
+              </a>
             </li>
             <li className={cn({"is-active": active === T})}>
-              <a onClick={() => this.onChange(T)}>Technical</a>
+              <a onClick={() => this.onChange(T)}>
+                Technical
+                <FilterCounter filters={tjson}/>
+              </a>
             </li>
           </ul>
         </div>
         <div>
           <div className={cn({"is-hidden": active !== D})}>
-            <Descriptive/>
+            <FilterTab filters={djson}/>
           </div>
           <div className={cn({"is-hidden": active !== F})}>
-          <Fundamental/>
+            <FilterTab filters={fjson}/>
           </div>
           <div className={cn({"is-hidden": active !== T})}>
-          <Technical/>
+            <FilterTab filters={tjson}/>
           </div>
         </div>
       </div>

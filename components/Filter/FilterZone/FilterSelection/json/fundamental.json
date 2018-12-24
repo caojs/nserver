@@ -1,0 +1,16 @@
+[{
+    "label": "Exchange",
+    "name": "exchange",
+    "options": [{
+        "label": "HOSE",
+        "value": "hose"
+    },
+    {
+        "label": "HNX",
+        "value": "hnx"
+    },
+    {
+        "label": "UPCOM",
+        "value": "upcom"
+    }]
+}]

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
-import {Field} from 'formik'
+import { Field } from 'formik'
 
 const StyledSelect = styled.div`
     width: 100%;
@@ -12,10 +12,7 @@ const StyledField = styled(Field)`
 
 export default class FilterTab extends Component {
     render() {
-        const {
-            filters,
-            type
-        } = this.props;
+        const { filters } = this.props;
 
         return (
             <div className="columns is-multiline">
@@ -25,7 +22,7 @@ export default class FilterTab extends Component {
                             <div className="field">
                                 <label className="label">{label}</label>
                                 <StyledSelect className="select">
-                                    <StyledField component="select" name={`filter.${type}.${name}`}>
+                                    <StyledField component="select" name={`filter.${name}`}>
                                         <option value="">All</option>
                                         {options.map(option => (
                                             <option key={option.label} value={option.value}>{option.label}</option>

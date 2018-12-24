@@ -1,7 +1,4 @@
-import React, { Component } from 'react'
-import FilterTab from '../FilterTab'
-
-const filters =  [{
+[{
     "label": "Debt/Total Asset",
     "name": "debt_total",
     "options": [
@@ -22,11 +19,3 @@ const filters =  [{
         "value": "o70"
     }]
 }]
-
-export default class Descriptive extends Component {
-    render() {
-        return (
-            <FilterTab filters={filters} type="descriptive"/>
-        )
-    }
-}
