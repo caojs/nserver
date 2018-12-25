@@ -3,10 +3,12 @@ import Link from 'next/link'
 import slugify from 'slugify'
 import styled from 'styled-components'
 import fecha from 'fecha'
+import { get } from 'lodash'
 
 import request from '~/request'
 import {fillPath} from '~/utils/images'
 import Layout from '~/components/Layout'
+import Error from '~/pages/_error'
 
 const Figure = styled.figure`
     margin-bottom: 30px;
@@ -55,9 +57,20 @@ export default class NewsDetail extends Component {
         const id = slug.split('.').pop()
         return request.get(`/posts/${id}`)
             .then(data => ({ data }))
+            .catch(error => ({ error }))
     }
 
     render() {
+        const {
+            error,
+            data
+        } = this.props
+
+        if (error) {
+            const statusCode = get(error, 'statusCode', 500)
+            return <Error statusCode={statusCode}/>
+        }
+
         const {
             id,
             title,
@@ -65,7 +78,7 @@ export default class NewsDetail extends Component {
             image,
             content,
             created_at
-        } = this.props.data;
+        } = data;
 
         const createdAt = fecha.format(new Date(created_at), 'mediumDate')
 

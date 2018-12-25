@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
+import { get } from 'lodash'
 
 import request from '~/request'
 import Layout from '~/components/Layout'
 import NewsList from '~/components/Home/News/NewsList'
 import Pagination from './Pagination'
+import Error from '~/pages/_error'
 
 const Heading = styled.div`
     margin-bottom: 45px;
@@ -32,29 +34,42 @@ export default class News extends Component {
   static async getInitialProps({ query }) {
     const { page = 0 } = (query || {})
 
-    const [count, list] = await Promise.all([
-      request.get('/posts/count'),
-      request.get('/posts', {
-        params: {
-          _limit: limit,
-          _start: page * limit
-        }
-      })
-    ])
+    try {
+      const res = await Promise.all([
+        request.get('/posts/count'),
+        request.get('/posts', {
+          params: {
+            _limit: limit,
+            _start: page * limit
+          }
+        })
+      ])
 
-    return {
-      count,
-      list,
-      page
+      const [ count, list ] = res
+
+      return {
+        count,
+        list,
+        page
+      }
+    }
+    catch (error) {
+      return ({ error })
     }
   }
 
   render() {
     const {
+      error,
       page,
       count,
       list
     } = this.props;
+
+    if (error) {
+      const statusCode = get(error, 'statusCode', 500)
+      return <Error statusCode={statusCode}/>
+    }
 
     const totalPage = Math.ceil(count/limit)
 
