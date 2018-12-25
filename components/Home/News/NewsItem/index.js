@@ -84,10 +84,10 @@ export default function NewsItem(props) {
 
   const createdAt = fecha.format(new Date(created_at), 'mediumDate');
 
-  const as = `/tin-tuc/${slugify(title)}.${id}`
+  const as = `/news/${slugify(title)}.${id}`
 
   const href = {
-    pathname: '/post-detail',
+    pathname: '/news-detail',
     query: {
       slug: `${slugify(title)}.${id}`
     }
@@ -111,7 +111,7 @@ export default function NewsItem(props) {
             <Time className="has-text-grey-light" dateTime={createdAt}>{createdAt}</Time>
             <p>{description}</p>
             <Link as={as} href={href}>
-              <RMA>Read more <FiChevronsRight/></RMA>
+              <RMA>Đọc thêm <FiChevronsRight/></RMA>
             </Link>
           </div>
         </div>

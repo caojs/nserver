@@ -28,7 +28,7 @@ const List = styled.div`
 
 const limit = 4;
 
-export default class Posts extends Component {
+export default class News extends Component {
   static async getInitialProps({ query }) {
     const { page = 0 } = (query || {})
 

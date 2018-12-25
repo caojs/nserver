@@ -49,7 +49,7 @@ const Content = styled.div`
     color: hsl(0, 0%, 29%);
 `;
 
-export default class PostDetail extends Component {
+export default class NewsDetail extends Component {
     static async getInitialProps({ query }) {
         const { slug } = query
         const id = slug.split('.').pop()
@@ -69,10 +69,10 @@ export default class PostDetail extends Component {
 
         const createdAt = fecha.format(new Date(created_at), 'mediumDate')
 
-        const as = `/tin-tuc/${slugify(title)}.${id}`
+        const as = `/news/${slugify(title)}.${id}`
 
         const href = {
-            pathname: '/post-detail',
+            pathname: '/news-detail',
             query: {
             slug: `${slugify(title)}.${id}`
             }

@@ -10,7 +10,7 @@ export default class Foot extends Component {
         return (
             <Wrapper className="section has-background-black-bis">
                 <div className="container">
-                    <p className="has-text-white-ter">Copyright 2019</p>
+                    <p className="has-text-white-ter">Copyright © 2019 XQuant</p>
                 </div>
             </Wrapper>
         )

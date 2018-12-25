@@ -39,27 +39,17 @@ function getPages(page, totalPage) {
   return p
 }
 
-function queryUrl(page) {
-  return {
-    pathname: '/posts',
-    query: { page }
-  };
-}
-
-function asUrl(p) {
-  return {
-    pathname: '/tin-tuc',
-    query: p === 0 ? {} : { p }
-  }
-}
-
 export default function Pagination(props) {
   let {
     totalPage,
     page,
-    asUrl,
-    queryUrl
+    getAs,
+    getHref
   } = props;
+
+  if (!getAs) {
+    getAs = getHref
+  }
   
   page = parseInt(page)
 
@@ -72,14 +62,14 @@ export default function Pagination(props) {
       <PreviousButton
         currentPage={page}
         isDisabled={isFirstPage}
-        asUrl={asUrl}
-        queryUrl={queryUrl}/>
+        getAs={getAs}
+        getHref={getHref}/>
 
       <NextButton
         currentPage={page}
         isDisabled={isLastPage}
-        asUrl={asUrl}
-        queryUrl={queryUrl}/>
+        getAs={getAs}
+        getHref={getHref}/>
 
       <ul className="pagination-list">
         {pages.map((bage, index) => {
@@ -93,7 +83,7 @@ export default function Pagination(props) {
 
           return (
             <li key={index}>
-              <Link as={asUrl(bage)} href={queryUrl(bage)}>
+              <Link as={getAs(bage)} href={getHref(bage)}>
                 <a className={cn("pagination-link", { "is-current": page === bage })}>
                   {bage + 1}
                 </a>

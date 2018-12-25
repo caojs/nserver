@@ -30,6 +30,7 @@ const Description = styled.div`
 
 const H = styled.h5`
     margin-bottom: 0.1rem;
+    font-weight: 500;
 `;
 
 const Soon = styled.span`
@@ -50,7 +51,7 @@ export default function Feature({ name, description, link, icon }) {
             <Description className="has-text-centered">
                 <H className="is-size-5 has-text-black-ter">{name}</H>
                 <p>{description}</p>
-                <Soon>Comming soon</Soon>
+                <Soon>Sắp ra mắt</Soon>
             </Description>
         </Wrapper>
     )

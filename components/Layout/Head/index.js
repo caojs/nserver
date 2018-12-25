@@ -62,7 +62,7 @@ export default class Head extends Component {
                             <Link href="/">
                                 <a className="navbar-item">Trang chủ</a>
                             </Link>
-                            <Link as="/tin-tuc" href="/posts">
+                            <Link href="/news">
                                 <a className="navbar-item">Tin tức</a>
                             </Link>
 
@@ -73,14 +73,26 @@ export default class Head extends Component {
                                 </a>
 
                                 <div className="navbar-dropdown">
-                                    <a className="navbar-item">Filter</a>
-                                    <a className="navbar-item">Optimization</a>
-                                    <a className="navbar-item">Backtesting</a>
+                                    <Link href="/filter">
+                                        <a className="navbar-item">Bộ lọc</a>
+                                    </Link>
+                                    <Link href="/optimization">
+                                        <a className="navbar-item">Tối ưu danh mục</a>
+                                    </Link>
+                                    <Link href="/backtesting">
+                                        <a className="navbar-item">Kiểm định</a>
+                                    </Link>
                                 </div>
                             </div>
+                            <Link href="/education">
+                                <a className="navbar-item">Đào tạo</a>
+                            </Link>
+                            <Link href="/contact">
+                                <a className="navbar-item">Liên hệ</a>
+                            </Link>
                         </div>
 
-                        <div className="navbar-end">
+                        <div className="navbar-end is-hidden">
                             <div className="navbar-item">
                                 <div className="buttons">
                                     <a className="button is-primary"> <strong>Đăng ký</strong> </a>

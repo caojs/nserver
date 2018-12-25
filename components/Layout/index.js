@@ -9,6 +9,7 @@ const Wrapper = styled.section`
 `;
 
 const BodyWrapper = styled.div`
+    position: relative;
     flex: 1;
 `;
 

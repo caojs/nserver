@@ -10,6 +10,7 @@ const Heading = styled.div`
 
 const H = styled.h3`
     font-size: 1.9rem;
+    font-weight: 500;
     margin-bottom: 0.4rem;
 `;
 
@@ -22,8 +23,8 @@ export default function News({ news }) {
     return (
         <section className="section">
             <Heading>
-                <H>News</H>
-                <P>We promise to keep you updated with our blog posts.</P>
+                <H>Tin tức</H>
+                <P>Thông tin nhanh và mới nhất được cập nhật hàng ngày.</P>
             </Heading>
             <div className="container">
                 <NewsList news={news}/>
