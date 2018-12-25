@@ -2,13 +2,12 @@ import ReactGA from 'react-ga'
 
 export const initGA = () => {
   console.log('GA init')
-  ReactGA.initialize('UA-130658907-1');
+  ReactGA.initialize('UA-130981055-1');
 }
 
 export const logPageView = () => {
-  console.log(`Logging pageview for ${window.location.pathname}`)
-  ReactGA.set({ page: window.location.pathname })
-  ReactGA.pageview(window.location.pathname)
+  console.log(`Logging pageview for ${window.location.pathname + window.location.search}`)
+  ReactGA.pageview(window.location.pathname + window.location.search)
 }
 
 export const logEvent = (category = '', action = '') => {

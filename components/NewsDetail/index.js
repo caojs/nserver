@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Link from 'next/link'
-import slugify from 'slugify'
+import slugify from 'voca/slugify'
 import styled from 'styled-components'
 import fecha from 'fecha'
 import { get } from 'lodash'

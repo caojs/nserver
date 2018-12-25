@@ -28,7 +28,7 @@ const List = styled.div`
   margin-bottom: 30px;
 `;
 
-const limit = 12;
+const limit = 20;
 
 export default class News extends Component {
   static async getInitialProps({ query }) {

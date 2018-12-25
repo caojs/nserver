@@ -19,6 +19,13 @@ const Wrapper = styled.div`
   justify-content: center;
 `;
 
+const TableWrapper = styled.div`
+  padding: 30px 20px;
+  background: white;
+  box-shadow: 0 0 1rem 0 rgba(10,10,10,.04);
+  border-radius: 6px;
+`;
+
 const Td = styled.td`
   padding: 10px;
 `;
@@ -45,6 +52,7 @@ export default function Contact() {
             <Title>Liên Hệ</Title>
           </Heading>
           <Wrapper>
+            <TableWrapper>
               <table>
                 <tbody>
                   <tr>
@@ -55,7 +63,7 @@ export default function Contact() {
                     </Td>
                     <Td>
                       <H4>Email</H4>
-                      <span>nhatnguyendhnh217@gmail.com</span>
+                      <span>nhatnm@xquant.ai</span>
                     </Td>
                   </tr>
                   <tr>
@@ -71,6 +79,7 @@ export default function Contact() {
                   </tr>
                 </tbody>
               </table>
+            </TableWrapper>
           </Wrapper>
         </div>
       </section>

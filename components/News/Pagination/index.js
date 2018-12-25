@@ -1,10 +1,14 @@
 import Pagination from '~/components/Pagination'
 
 function getHref(page) {
-  return {
-    pathname: '/news',
-    query: { page }
-  };
+  const pathname = '/news'
+
+  return page > 0 ?
+    {
+      pathname,
+      query: { page }
+    } :
+    pathname;
 }
 
 export default function NewsPagination(props) {
