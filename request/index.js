@@ -12,6 +12,7 @@ const request = function (url, options = {}) {
         .then(function(response) {
             if (!response.ok) {
                 const error = Error(response.statusText)
+                error.statusCode = response.status
                 error.response = response
                 throw error
             }

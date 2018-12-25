@@ -32,13 +32,15 @@ export default class News extends Component {
   static async getInitialProps({ query }) {
     const { page = 0 } = (query || {})
 
-    const count = await request.get('/posts/count')
-    const list = await request.get('/posts', {
-      params: {
-        _limit: limit,
-        _start: page * limit
-      }
-    })
+    const [count, list] = await Promise.all([
+      request.get('/posts/count'),
+      request.get('/posts', {
+        params: {
+          _limit: limit,
+          _start: page * limit
+        }
+      })
+    ])
 
     return {
       count,

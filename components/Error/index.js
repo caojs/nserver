@@ -1,5 +1,7 @@
-import Layout from '../Layout'
+import { Component } from 'react'
 import styled from 'styled-components'
+
+import Layout from '../Layout'
 
 const Section = styled.section`
   position: absolute;
@@ -38,26 +40,37 @@ const TextWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   text-align: center;
-  padding: 20px 0;
+  padding: 10px 0;
 `;
 
 const Text = styled.span`
   display: block;
   font-size: 1.1rem;
-  font-weight: 500;
 `;
 
-export default function ComingSoon() {
-  return (
-    <Layout>
-      <Section className="section">
-          <Wrapper>
-            <Logo className="has-text-primary">XQuant</Logo>
-            <TextWrapper>
-              <Text>Tính năng đang được hoàn thiện.</Text>
-            </TextWrapper>
-          </Wrapper>
-      </Section>
-    </Layout>
-  )
+const StatusCode = styled(Text)`
+  font-weight: 500;
+  font-size: 1.5rem;
+`;
+
+export default class Error extends Component {
+
+  render() {
+    const { statusCode } = this.props
+    const message = statusCode === 404 ? 'Trang này không tồn tại.' : 'Đã có lỗi xảy ra.'
+
+    return (
+      <Layout>
+        <Section className="section">
+            <Wrapper>
+              <Logo className="has-text-primary">XQuant</Logo>
+              <TextWrapper>
+                <StatusCode>{statusCode}</StatusCode>
+                <Text>{message}</Text>
+              </TextWrapper>
+            </Wrapper>
+        </Section>
+      </Layout>
+    )
+  }
 }

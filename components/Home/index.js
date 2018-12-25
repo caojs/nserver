@@ -10,7 +10,8 @@ import request from '~/request';
 export default class Home extends Component {
     static async getInitialProps() {
         return request.get('/posts', { params: {_limit: 3} })
-            .then(res => ({ news: res }));
+            .then(res => ({ news: res }))
+            .catch(e => Promise.resolve({ news: []}));
     }
 
     render() {
@@ -22,7 +23,7 @@ export default class Home extends Component {
             <Layout>
                 <Banner/>
                 <Features/>
-                <News news={news}/>
+                {news.length ? <News news={news}/> : null}
             </Layout>
         )
     }
